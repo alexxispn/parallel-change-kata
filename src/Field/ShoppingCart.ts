@@ -1,17 +1,11 @@
 import { Product } from "./Product.js"
 
 export class ShoppingCart {
-  products: { price: number; quantity: number }[] = []
   productsDomain: Product[] = []
 
   add = (price: number, quantity = 1) => {
     const product = new Product(price, quantity)
     this.productsDomain.push(product)
-
-    this.products.push({
-      price,
-      quantity,
-    })
   }
 
   calculateTotalPrice = () => {
@@ -22,7 +16,10 @@ export class ShoppingCart {
   }
 
   numberOfProducts = () =>
-    this.products.reduce((quantity, product) => quantity + product.quantity, 0)
+    this.productsDomain.reduce(
+      (quantity, product) => quantity + product.getQuantity(),
+      0,
+    )
 
   hasDiscount = () =>
     this.productsDomain.some((product) => product.hasDiscount())

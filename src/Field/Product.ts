@@ -7,6 +7,10 @@ export class Product {
     this.quantity = quantity
   }
 
+  getQuantity() {
+    return this.quantity
+  }
+
   hasDiscount() {
     return this.price > 100
   }
