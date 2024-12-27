@@ -4,8 +4,7 @@ export class ShoppingCart {
   productsDomain: Product[] = []
 
   add = (price: number, quantity = 1) => {
-    const product = new Product(price, quantity)
-    this.productsDomain.push(product)
+    this.productsDomain.push(new Product(price, quantity))
   }
 
   calculateTotalPrice = () => {
