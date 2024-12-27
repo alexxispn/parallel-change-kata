@@ -17,5 +17,5 @@ export class ShoppingCart {
   numberOfProducts = () =>
     this.products.reduce((quantity, product) => quantity + product.quantity, 0)
 
-  hasDiscount = () => this.calculateTotalPrice() > 100
+  hasDiscount = () => this.products.some((product) => product.price > 100)
 }
