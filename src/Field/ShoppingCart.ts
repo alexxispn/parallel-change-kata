@@ -1,11 +1,13 @@
 export class ShoppingCart {
-  price = 0;
+  prices: number[] = []
 
-  add = (price: number) => (this.price = price);
+  add = (price: number) => {
+    this.prices.push(price)
+  }
 
-  calculateTotalPrice = () => this.price;
+  calculateTotalPrice = () => this.prices.reduce((acc, curr) => acc + curr, 0)
 
-  numberOfProducts = () => 1;
+  numberOfProducts = () => this.prices.length
 
-  hasDiscount = () => this.price > 100;
+  hasDiscount = () => this.calculateTotalPrice() > 100
 }
